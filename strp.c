@@ -11,7 +11,7 @@ size_t Str_getLength(const char* str)
 {
     const char* strCh = str;
     assert(str != NULL);
-    while (*strCh != '\0') strCh++;
+    while (*strCh) strCh++;
     return (size_t) (strCh - str);
 }
 
@@ -21,7 +21,7 @@ char* Str_copy(char* dest, const char* src)
     char* destCh = dest;
     const char* srcCh = src;
     assert(src != NULL && dest != NULL);
-    while ((*destCh++ = *srcCh++) != '\0');
+    while ((*destCh++ = *srcCh++));
     return dest;
 }
 
@@ -31,8 +31,8 @@ char* Str_concat(char* dest, const char* src)
     char* destCh = dest;
     const char* srcCh = src;
     assert(src != NULL && dest != NULL);
-    while (*destCh != '\0') destCh++;
-    while ((*destCh++ = *srcCh++) != '\0');
+    while (*destCh) destCh++;
+    while ((*destCh++ = *srcCh++));
     return dest;
 }
 
@@ -41,7 +41,7 @@ int Str_compare(const char* lhs, const char* rhs)
 {
     const char *lCh = lhs, *rCh = rhs;
     assert(lhs != NULL && rhs != NULL);
-    while (*lCh != '\0' || *rCh != '\0') {
+    while (*lCh || *rCh) {
         if (*lCh != *rCh) return (int) (*lCh - *rCh);
         lCh++; rCh++;
     }
@@ -58,7 +58,7 @@ char* Str_search(const char* str, const char* substr)
     if (!*substr) return (char*) str;
     if (!*str) return NULL;
 
-    while (*strCh != '\0') {
+    while (*strCh) {
         if (*strCh != *subCh) {
             start++;
             strCh = start;
