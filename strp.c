@@ -32,7 +32,7 @@ int Str_compare(const char* lhs, const char* rhs)
     const char *lCh = lhs, *rCh = rhs;
     assert(lhs != NULL && rhs != NULL);
     while (*lCh != '\0' || *rCh != '\0') {
-        if (*lCh != *rCh) return *lCh - *rCh;
+        if (*lCh != *rCh) return (int) (*lCh - *rCh);
         lCh++; rCh++;
     }
     return 0;

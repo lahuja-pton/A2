@@ -37,7 +37,7 @@ int Str_compare(const char lhs[], const char rhs[])
 
     while (lhs[chx] != '\0' || rhs[chx] != '\0') {
         if (lhs[chx] != rhs[chx])
-            return lhs[chx] - rhs[chx];
+            return (int) (lhs[chx] - rhs[chx]);
         chx++;
     }
     
