@@ -52,10 +52,15 @@ char* Str_search(const char str[], const char substr[])
     if (substr[0] == '\0') return (char*) str;
     if (str[0] == '\0') return NULL;
 
-    while (str[r] != '\0') {
-        if (substr[r-l] == '\0') return (char*) &str[l];
-        else if (str[r] != substr[r-l]) l = l == r ? ++r : r;
-        else r++;
+    while (str[l] != '\0') {
+        if (str[l] == substr[0]) {
+            r = l + 1;
+            while (str[r] == substr[r-l]) {
+                r++;
+                if (substr[r-l] == '\0') return (char*) &str[l];
+            }
+        }
+        l++;
     }
-    return substr[r-l] == '\0' ? (char*) &str[l] : NULL;
+    return NULL;
 }
