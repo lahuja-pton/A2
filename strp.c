@@ -10,7 +10,8 @@ size_t Str_getLength(const char* str)
 
 char* Str_copy(char* dest, const char* src)
 {
-    char *destCh = dest, *srcCh = src;
+    char *destCh = dest;
+    const *srcCh = src;
     assert(src != NULL && dest != NULL);
     while ((*destCh++ = *srcCh++) != '\0');
     return dest;
@@ -18,7 +19,8 @@ char* Str_copy(char* dest, const char* src)
 
 char* Str_concat(char* dest, const char* src) 
 {
-    char *destCh = dest, *srcCh = src;
+    char *destCh = dest;
+    const *srcCh = src;
     assert(src != NULL && dest != NULL);
     while (*destCh != '\0') destCh++;
     while ((*destCh++ = *srcCh++) != '\0');
