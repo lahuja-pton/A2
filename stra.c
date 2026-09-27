@@ -2,8 +2,8 @@
 
 size_t Str_getLength(const char str[]) 
 {
-    assert(str != NULL);
     size_t len = 0;
+    assert(str != NULL);
     while (str[len] != '\0')
         len++;
     return len;
@@ -20,11 +20,11 @@ char* Str_copy(char dest[], const char src[])
 
 char* Str_concat(char dest[], const char src[]) 
 {
-    size_t chx = 0;
+    size_t chx = 0, len;
     assert(src != NULL && dest != NULL);
     while (dest[chx] != '\0')
         chx++;
-    size_t len = chx;
+    len = chx;
     while ((dest[chx] = src[chx - len]) != '\0')
         chx++;
     return dest;
@@ -49,7 +49,7 @@ char* Str_search(const char str[], const char substr[])
     size_t l = 0, r = 0;
     assert(str != NULL && substr != NULL);
 
-    if (substr[0] == '\0') return str;
+    if (substr[0] == '\0') return (char*) str;
     if (str[0] == '\0') return NULL;
 
     while (str[r] != '\0') {
