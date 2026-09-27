@@ -54,7 +54,7 @@ int Str_compare(const char lhs[], const char rhs[])
     return 0;
 }
 
-/* Return a pointer to the first occurrence of substr in str, or NULL. */
+/* Return a pointer to the first occurrence of substr in str, or NULL */
 char* Str_search(const char str[], const char substr[]) 
 {
     size_t left = 0, right = 0;
@@ -64,11 +64,14 @@ char* Str_search(const char str[], const char substr[])
     if (str[0] == '\0') return NULL;
 
     while (str[left] != '\0') {
+        /* increments left until first character matches */
         while (str[left] != substr[0]) left++;
         right = left;
         do {
+            /* increments right if it matches with the current char */
             right++;
             if (substr[right-left] == '\0') 
+                /* if full string matches, return */
                 return (char*) &str[left];
         } while (str[right] == substr[right-left]);
         left++;
