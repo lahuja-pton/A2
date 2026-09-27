@@ -73,7 +73,7 @@ char* Str_search(const char str[], const char substr[])
             if (substr[right-left] == '\0') 
                 /* if full string matches, return */
                 return (char*) &str[left];
-        } while (str[right] == substr[right-left]);
+        } while (str[right] && str[right] == substr[right-left]);
         left++;
     }
     return NULL;

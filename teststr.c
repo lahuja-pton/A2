@@ -674,7 +674,7 @@ static void testSearch(void)
       pcResult2 = strstr(acHaystack, acNeedle);
       ASSURE(pcResult1 == pcResult2);
    }
-/*
+
    printf("   Stress Tests\n");
    fflush(stdout);
 
@@ -746,7 +746,7 @@ static void testSearch(void)
          pcResult2 = strstr(acSrc1, acSrc2);
          ASSURE(pcResult1 == pcResult2);
       }
-   }*/
+   }
 }
 
 /*--------------------------------------------------------------------*/
