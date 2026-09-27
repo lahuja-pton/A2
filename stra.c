@@ -11,8 +11,7 @@ size_t Str_getLength(const char str[])
 {
     size_t len = 0;
     assert(str != NULL);
-    while (str[len] != '\0')
-        len++;
+    while (str[len]) len++;
     return len;
 }
 
@@ -21,8 +20,7 @@ char* Str_copy(char dest[], const char src[])
 {
     size_t chx = 0;
     assert(src != NULL && dest != NULL);
-    while ((dest[chx] = src[chx]) != '\0')
-        chx++;
+    while (dest[chx] = src[chx]) chx++;
     return dest;
 }
 
@@ -31,11 +29,9 @@ char* Str_concat(char dest[], const char src[])
 {
     size_t chx = 0, len;
     assert(src != NULL && dest != NULL);
-    while (dest[chx] != '\0')
-        chx++;
+    while (dest[chx]) chx++;
     len = chx;
-    while ((dest[chx] = src[chx - len]) != '\0')
-        chx++;
+    while (dest[chx] = src[chx - len]) chx++;
     return dest;
 }
 
@@ -45,7 +41,7 @@ int Str_compare(const char lhs[], const char rhs[])
     size_t chx = 0;
     assert(lhs != NULL && rhs != NULL);
 
-    while (lhs[chx] != '\0' || rhs[chx] != '\0') {
+    while (lhs[chx] || rhs[chx]) {
         if (lhs[chx] != rhs[chx])
             return (int) (lhs[chx] - rhs[chx]);
         chx++;
@@ -60,17 +56,18 @@ char* Str_search(const char str[], const char substr[])
     size_t left = 0, right = 0;
     assert(str != NULL && substr != NULL);
 
-    if (substr[0] == '\0') return (char*) str;
-    if (str[0] == '\0') return NULL;
+    if (!substr[0]) return (char*) str;
+    if (!str[0]) return NULL;
 
-    while (str[left] != '\0') {
+    while (str[left]) {
         /* increments left until first character matches */
-        while (str[left] != substr[0]) left++;
+        while (str[left] && str[left] != substr[0]) left++;
+        if (!str[left]) break;
         right = left;
         do {
             /* increments right if it matches with the current char */
             right++;
-            if (substr[right-left] == '\0') 
+            if (!substr[right-left]) 
                 /* if full string matches, return */
                 return (char*) &str[left];
         } while (str[right] && str[right] == substr[right-left]);
