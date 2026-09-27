@@ -20,7 +20,7 @@ char* Str_copy(char dest[], const char src[])
 {
     size_t chx = 0;
     assert(src != NULL && dest != NULL);
-    while (dest[chx] = src[chx]) chx++;
+    while ((dest[chx] = src[chx])) chx++;
     return dest;
 }
 
@@ -31,7 +31,7 @@ char* Str_concat(char dest[], const char src[])
     assert(src != NULL && dest != NULL);
     while (dest[chx]) chx++;
     len = chx;
-    while (dest[chx] = src[chx - len]) chx++;
+    while ((dest[chx] = src[chx - len])) chx++;
     return dest;
 }
 
