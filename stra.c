@@ -54,11 +54,11 @@ char* Str_search(const char str[], const char substr[])
 
     while (str[l] != '\0') {
         if (str[l] == substr[0]) {
-            r = l + 1;
-            while (str[r] == substr[r-l]) {
+            r = l;
+            do {
                 r++;
                 if (substr[r-l] == '\0') return (char*) &str[l];
-            }
+            } while (str[r] == substr[r-l]);
         }
         l++;
     }
