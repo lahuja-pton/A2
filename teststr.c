@@ -511,7 +511,7 @@ static void testSearch(void)
       pcResult2 = strstr(acHaystack, acNeedle);
       ASSURE(pcResult1 == pcResult2);
    }
-
+/*
    printf("   Statement Tests\n");
    fflush(stdout);
 
@@ -674,7 +674,7 @@ static void testSearch(void)
       pcResult2 = strstr(acHaystack, acNeedle);
       ASSURE(pcResult1 == pcResult2);
    }
-/*
+
    printf("   Stress Tests\n");
    fflush(stdout);
 
@@ -766,7 +766,7 @@ int main(int argc, char *argv[])
    testCopy();
    testConcat();
    testCompare();
-   /* testSearch(); */
+   testSearch(); 
 
    printf("End of %s.\n", argv[0]);
    return 0;
