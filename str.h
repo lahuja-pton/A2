@@ -1,17 +1,28 @@
-#ifndef STR_H
-#define STR_H
+/*--------------------------------------------------------------------*/
+/* str.h                                                              */
+/* Author: Lakshit Ahuja                                              */
+/* Interface for string manipulation functions.                       */
+/*--------------------------------------------------------------------*/
+
+#ifndef STR_INCLUDED
+#define STR_INCLUDED
 
 #include <stddef.h>
 #include <assert.h>
 
-size_t Str_getLength(const char* str);
+/* Return the length of string str, not including the trailing '\0'. */
+size_t Str_getLength(const char str[]);
 
-char* Str_copy(char* dest, const char* src);
+/* Copy string src into dest and return dest. */
+char* Str_copy(char dest[], const char src[]);
 
-char* Str_concat(char* dest, const char* src);
+/* Append string src to dest and return dest. */
+char* Str_concat(char dest[], const char src[]);
 
-int Str_compare(const char* lhs, const char* rhs);
+/* Return a negative, zero, or positive value comparing lhs with rhs. */
+int Str_compare(const char lhs[], const char rhs[]);
 
-char* Str_search(const char* str, const char* substr);
+/* Return a pointer to the first occurrence of substr in str, or NULL. */
+char* Str_search(const char str[], const char substr[]);
 
 #endif

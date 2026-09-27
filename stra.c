@@ -1,5 +1,12 @@
+/*--------------------------------------------------------------------*/
+/* stra.c                                                             */
+/* Author: Lakshit Ahuja                                              */
+/* Implements string manipulation functions.                         */
+/*--------------------------------------------------------------------*/
+
 #include "str.h"
 
+/* Return the length of string str, not including the trailing '\0'. */
 size_t Str_getLength(const char str[]) 
 {
     size_t len = 0;
@@ -9,6 +16,7 @@ size_t Str_getLength(const char str[])
     return len;
 }
 
+/* Copy string src into dest and return dest. */
 char* Str_copy(char dest[], const char src[]) 
 {
     size_t chx = 0;
@@ -16,8 +24,9 @@ char* Str_copy(char dest[], const char src[])
     while ((dest[chx] = src[chx]) != '\0')
         chx++;
     return dest;
-} 
+}
 
+/* Append string src to dest and return dest. */
 char* Str_concat(char dest[], const char src[]) 
 {
     size_t chx = 0, len;
@@ -30,6 +39,7 @@ char* Str_concat(char dest[], const char src[])
     return dest;
 }
 
+/* Return a negative, zero, or positive value comparing lhs with rhs. */
 int Str_compare(const char lhs[], const char rhs[]) 
 {
     size_t chx = 0;
@@ -44,6 +54,7 @@ int Str_compare(const char lhs[], const char rhs[])
     return 0;
 }
 
+/* Return a pointer to the first occurrence of substr in str, or NULL. */
 char* Str_search(const char str[], const char substr[]) 
 {
     size_t left = 0, right = 0;
@@ -58,7 +69,7 @@ char* Str_search(const char str[], const char substr[])
         do {
             right++;
             if (substr[right-left] == '\0') 
-            return (char*) &str[left];
+                return (char*) &str[left];
         } while (str[right] == substr[right-left]);
         left++;
     }

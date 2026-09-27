@@ -1,5 +1,12 @@
+/*--------------------------------------------------------------------*/
+/* strp.c                                                             */
+/* Author: Lakshit Ahuja                                              */
+/* Implements string manipulation functions.                         */
+/*--------------------------------------------------------------------*/
+
 #include "str.h"
 
+/* Return the length of string str, not including the trailing '\0'. */
 size_t Str_getLength(const char* str) 
 {
     const char* strCh = str;
@@ -8,6 +15,7 @@ size_t Str_getLength(const char* str)
     return (size_t) (strCh - str);
 }
 
+/* Copy string src into dest and return dest. */
 char* Str_copy(char* dest, const char* src)
 {
     char* destCh = dest;
@@ -15,8 +23,9 @@ char* Str_copy(char* dest, const char* src)
     assert(src != NULL && dest != NULL);
     while ((*destCh++ = *srcCh++) != '\0');
     return dest;
-} 
+}
 
+/* Append string src to dest and return dest. */
 char* Str_concat(char* dest, const char* src) 
 {
     char* destCh = dest;
@@ -27,6 +36,7 @@ char* Str_concat(char* dest, const char* src)
     return dest;
 }
 
+/* Return a negative, zero, or positive value comparing lhs with rhs. */
 int Str_compare(const char* lhs, const char* rhs) 
 {
     const char *lCh = lhs, *rCh = rhs;
@@ -38,6 +48,7 @@ int Str_compare(const char* lhs, const char* rhs)
     return 0;
 }
 
+/* Return a pointer to the first occurrence of substr in str, or NULL. */
 char* Str_search(const char* str, const char* substr) 
 {
     const char *strCh = str, *subCh = substr;
