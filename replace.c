@@ -33,7 +33,7 @@ static size_t replaceAndWrite(const char *pcLine,
       print = sub + fromLen;
       num++;
    }
-   printf("%s\n", print);
+   printf("%s", print);
    return num;
 }
 
