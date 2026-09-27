@@ -53,8 +53,8 @@ char* Str_search(const char str[], const char substr[])
     if (str[0] == '\0') return NULL;
 
     while (str[r] != '\0') {
-        if (str[r] != substr[r-l]) l = l == r ? ++r : r;
-        else if (substr[r-l] == '\0') return (char*) &str[l];
+        if (substr[r-l] == '\0') return (char*) &str[l];
+        else if (str[r] != substr[r-l]) l = l == r ? ++r : r;
         else r++;
     }
     return NULL;
