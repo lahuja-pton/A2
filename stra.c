@@ -57,5 +57,5 @@ char* Str_search(const char str[], const char substr[])
         else if (str[r] != substr[r-l]) l = l == r ? ++r : r;
         else r++;
     }
-    return NULL;
+    return substr[r-l] == '\0' ? (char*) &str[l] : NULL;
 }
