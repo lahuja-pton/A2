@@ -11,8 +11,8 @@ size_t Str_getLength(const char str[])
 
 char* Str_copy(char dest[], const char src[]) 
 {
-    assert(src != NULL && dest != NULL);
     size_t chx = 0;
+    assert(src != NULL && dest != NULL);
     while ((dest[chx] = src[chx]) != '\0')
         chx++;
     return dest;
@@ -20,8 +20,8 @@ char* Str_copy(char dest[], const char src[])
 
 char* Str_concat(char dest[], const char src[]) 
 {
-    assert(src != NULL && dest != NULL);
     size_t chx = 0;
+    assert(src != NULL && dest != NULL);
     while (dest[chx] != '\0')
         chx++;
     size_t len = chx;
@@ -32,9 +32,9 @@ char* Str_concat(char dest[], const char src[])
 
 int Str_compare(const char lhs[], const char rhs[]) 
 {
+    size_t chx = 0;
     assert(lhs != NULL && rhs != NULL);
 
-    size_t chx = 0;
     while (lhs[chx] != '\0' || rhs[chx] != '\0') {
         if (lhs[chx] != rhs[chx])
             return lhs[chx] - rhs[chx];
@@ -46,15 +46,15 @@ int Str_compare(const char lhs[], const char rhs[])
 
 char* Str_search(const char str[], const char substr[]) 
 {
+    size_t l = 0, r = 0;
     assert(str != NULL && substr != NULL);
 
     if (substr[0] == '\0') return str;
     if (str[0] == '\0') return NULL;
 
-    size_t l = 0, r = 0;
     while (str[r] != '\0') {
         if (str[r] != substr[r-l]) l = l == r ? ++r : r;
-        else if (substr[r-l] == '\0') return &str[l];
+        else if (substr[r-l] == '\0') return (char*) &str[l];
         else r++;
     }
     return NULL;
