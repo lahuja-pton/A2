@@ -46,21 +46,21 @@ int Str_compare(const char lhs[], const char rhs[])
 
 char* Str_search(const char str[], const char substr[]) 
 {
-    size_t l = 0, r = 0;
+    size_t left = 0, right = 0;
     assert(str != NULL && substr != NULL);
 
     if (substr[0] == '\0') return (char*) str;
     if (str[0] == '\0') return NULL;
 
-    while (str[l] != '\0') {
-        if (str[l] == substr[0]) {
-            r = l;
-            do {
-                r++;
-                if (substr[r-l] == '\0') return (char*) &str[l];
-            } while (str[r] == substr[r-l]);
-        }
-        l++;
+    while (str[left] != '\0') {
+        while (str[left] != substr[0]) left++;
+        right = left;
+        do {
+            right++;
+            if (substr[right-left] == '\0') 
+            return (char*) &str[left];
+        } while (str[right] == substr[right-left]);
+        left++;
     }
     return NULL;
 }
